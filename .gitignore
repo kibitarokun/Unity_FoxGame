@@ -482,3 +482,8 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# 2024/9/11 自分で追加　以下をバージョン管理しない
+Library
+Hashes
+
