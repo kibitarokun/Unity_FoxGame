@@ -20,14 +20,17 @@ public class GameManager : MonoBehaviour
 
     //ボタン追加
     public GameObject panel;
-    public GameObject restartButton;
-    public GameObject nextButton;
+    public GameObject retryButton;
+    public GameObject resultButton;
 
     Image titleImage;
 
     // Start is called before the first frame update
     void Start()
     {
+        //スコアのリセット
+        totalScore = 0;
+
         //タイトル画像とパネル非表示
         Invoke("InactiveImage", 1.0f);
         panel.SetActive(false);
@@ -91,7 +94,7 @@ public class GameManager : MonoBehaviour
         if (PlayerController.gameState == "gameend")
         {
             panel.SetActive(true);
-        }   
+        }
     }
 
     void InactiveImage()

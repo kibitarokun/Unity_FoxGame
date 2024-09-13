@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -72,20 +73,31 @@ public class PlayerController : MonoBehaviour
         axisV = Input.GetAxisRaw("Vertical");
         down = Input.GetKey(KeyCode.DownArrow);　//下矢印キーを押し続けているかを検知し、true/falseで返す
 
-        if (axisH > 0.0f)
+        if (axisH > 0.0f) //右移動
         {
-            Debug.Log("右移動");
-            transform.localScale = new Vector2(7, 7);
+            if(SceneManager.GetActiveScene().name == "Stage1") //ステージ1の時だけプレイヤーの大きさを変える
+            {
+                transform.localScale = new Vector2(12, 10);
+            }
+            else
+            {
+                transform.localScale = new Vector2(7, 7);
+            }            
         }
-        else if (axisH < 0.0f)
+        else if (axisH < 0.0f) //左移動
         {
-            Debug.Log("左移動");
-            transform.localScale = new Vector2(-7, 7);
+            if (SceneManager.GetActiveScene().name == "Stage1") //ステージ1の時だけプレイヤーの大きさを変える
+            {
+                transform.localScale = new Vector2(-12, 10);
+            }
+            else
+            {
+                transform.localScale = new Vector2(-7, 7);
+            }
         }
 
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("ジャンプ");
             Jump();
         }
 
@@ -205,7 +217,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
 
             //自動生成されるまでの時間を設定
-            time = 1.0f;
+            time = 0.5f;
             isSpawn = true;
         }
         
