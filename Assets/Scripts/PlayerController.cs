@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         {
             if(SceneManager.GetActiveScene().name == "Stage1") //ステージ1の時だけプレイヤーの大きさを変える
             {
-                transform.localScale = new Vector2(12, 10);
+                transform.localScale = new Vector2(10, 8);
             }
             else
             {
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Stage1") //ステージ1の時だけプレイヤーの大きさを変える
             {
-                transform.localScale = new Vector2(-12, 10);
+                transform.localScale = new Vector2(-10, 8);
             }
             else
             {
@@ -156,7 +156,6 @@ public class PlayerController : MonoBehaviour
 
         if (goClimb)　//goClimbがtrueなら登る
         {
-            Debug.Log("登る");
             rbody.velocity = new Vector2(rbody.velocity.x, axisV * speed);
             rbody.gravityScale = 0;　//はしごの途中で動きを止める
         }

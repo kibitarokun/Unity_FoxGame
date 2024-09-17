@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 748124624847046230}
   - component: {fileID: 8221285367993365778}
   - component: {fileID: 6972174961020241879}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: gem-1
   m_TagString: ScoreItem
   m_Icon: {fileID: 0}
