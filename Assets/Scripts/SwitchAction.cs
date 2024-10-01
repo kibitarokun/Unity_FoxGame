@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class SwitchAction : MonoBehaviour
 {
-    //スイッチを押すとダイヤでかたどったKが出現する仕組み
+    //スイッチを押すとダイヤでかたどったKが出現する
     public GameObject targetItem;
     public Sprite imageOn;
     public Sprite imageOff;
-    bool on = false; //スイッチの状態（true:押されている　false:　押されていない）
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +25,8 @@ public class SwitchAction : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")　//プレイヤーと接触すると
         {
-            on = true;　//スイッチがONになる
-            GetComponent<SpriteRenderer>().sprite = imageOn;
+            GetComponent<SpriteRenderer>().sprite = imageOn; //スイッチが作動する
+
             //ItemManagerスクリプトの自作メソッドが発動
             ItemManager ItemM = targetItem.GetComponent<ItemManager>();　
             ItemM.ActiveK();
