@@ -88,12 +88,18 @@ public class GameManager : MonoBehaviour
                 playerCnt.score = 0;
                 UpdateScore();
             }
+
+            //BGM再生
+            SoundManager.soundManager.PlayBgm(BGMType.InGame);
         }
         
         //タイムアップしたらパネルを表示
         if (PlayerController.gameState == "gameend")
         {
             panel.SetActive(true);
+
+            //BGM停止
+            SoundManager.soundManager.StopBgm(BGMType.None);            
         }
     }
 

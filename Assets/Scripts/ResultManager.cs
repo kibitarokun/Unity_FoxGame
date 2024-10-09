@@ -23,6 +23,9 @@ public class ResultManager : MonoBehaviour
 
         //hith score‚ğ•\¦
         HighScore();
+
+        //BGMÄ¶
+        SoundManager.soundManager.PlayBgm(BGMType.Result);
     }
 
     // Update is called once per frame

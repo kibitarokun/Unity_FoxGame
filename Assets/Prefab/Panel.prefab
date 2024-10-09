@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7968667769952131599}
   - component: {fileID: 3671692580882040740}
   - component: {fileID: 4182270418712532005}
-  - component: {fileID: 1820954568853825146}
+  - component: {fileID: 4764344464910351966}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -257,8 +257,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3671692580882040740}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1820954568853825146
+      m_Calls:
+      - m_Target: {fileID: 4764344464910351966}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4764344464910351966}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4764344464910351966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,7 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d37b73436e5d6845a62711e7ddeee7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Stage3
+  seButton: {fileID: 8300000, guid: 9f49e57c8346a45f3bac567578528294, type: 3}
 --- !u!1 &5715561199257595708
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +630,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7800504437493097474}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9028787882879930921}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9028787882879930921}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9028787882879930921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,4 +667,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d37b73436e5d6845a62711e7ddeee7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Result
+  seButton: {fileID: 8300000, guid: 9f49e57c8346a45f3bac567578528294, type: 3}

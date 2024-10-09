@@ -218,13 +218,19 @@ public class PlayerController : MonoBehaviour
             //自動生成されるまでの時間を設定
             time = 0.5f;
             isSpawn = true;
+
+            //効果音発生
+            SoundManager.soundManager.SEPlay(SEType.Get);
         }
         
         //Damageタグが付いたものに接触するとスコアが減る
         else if (collision.gameObject.tag == "Damage") 
         {
             score--;
-            animator.Play(hurtAnime);         
+            animator.Play(hurtAnime);
+
+            //効果音発生
+            SoundManager.soundManager.SEPlay(SEType.Damage);
         }
     }
 }

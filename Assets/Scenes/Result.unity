@@ -762,6 +762,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2067544176}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &840511530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,6 +1370,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735709322}
   m_CullTransparentMesh: 1
+--- !u!1001 &2026868908
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2382551838335799952, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235546898951937757, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: seBotton
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f49e57c8346a45f3bac567578528294, type: 3}
+    - target: {fileID: 7714748577970482463, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714748577970482463, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714748577970482463, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714748577970482463, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714748577970482463, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714748577970482463, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714748577970482463, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714748577970482463, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714748577970482463, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714748577970482463, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e9da92a7f2d82f45bd3f06e3454b860, type: 3}
 --- !u!1 &2067544169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,7 +1443,7 @@ GameObject:
   - component: {fileID: 2067544174}
   - component: {fileID: 2067544173}
   - component: {fileID: 2067544172}
-  - component: {fileID: 2067544171}
+  - component: {fileID: 2067544176}
   m_Layer: 5
   m_Name: Button1
   m_TagString: Untagged
@@ -1398,19 +1471,6 @@ RectTransform:
   m_AnchoredPosition: {x: -194, y: -199.3}
   m_SizeDelta: {x: 383.7, y: 170.6}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2067544171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067544169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d37b73436e5d6845a62711e7ddeee7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Title
 --- !u!114 &2067544172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,9 +1515,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2067544171}
+      - m_Target: {fileID: 2067544176}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2067544176}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1505,6 +1577,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067544169}
   m_CullTransparentMesh: 1
+--- !u!114 &2067544176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067544169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d37b73436e5d6845a62711e7ddeee7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Title
+  seButton: {fileID: 8300000, guid: 9f49e57c8346a45f3bac567578528294, type: 3}
 --- !u!1 &2080127565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,6 +1686,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2067544176}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2080127568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,3 +1743,4 @@ SceneRoots:
   - {fileID: 1535649537}
   - {fileID: 1656327986}
   - {fileID: 211016946}
+  - {fileID: 2026868908}
