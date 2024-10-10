@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6032312abd6dbfc46976a657ab089f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmNone: {fileID: 0}
   bgmInTitle: {fileID: 8300000, guid: 6979d52fda0579441a2122b95abaf337, type: 3}
   bgmInGame: {fileID: 8300000, guid: 0c2f5e196afe4644d9b1ffb8d644851d, type: 3}
   bgmInResult: {fileID: 8300000, guid: 596e0f53d0760684897f73aa6d85324a, type: 3}
   seGet: {fileID: 8300000, guid: ce8be4414c8fd4acdb65979fbc3ce5a1, type: 3}
   seDamage: {fileID: 8300000, guid: b0cd2f93e630948669b0e32a240aff0d, type: 3}
   seSwitch: {fileID: 8300000, guid: 16db46c74bee6c244ada8cf6c12b2aa5, type: 3}
-  seButton: {fileID: 8300000, guid: 9f49e57c8346a45f3bac567578528294, type: 3}
 --- !u!82 &7425092244148890213
 AudioSource:
   m_ObjectHideFlags: 0
