@@ -43,3 +43,4 @@ public class AudioController : MonoBehaviour
 //AudioListenerのボリュームを調整することでゲーム全体のサウンドのオンオフを行った。
 //ボタンのテキストは音が出ている時は"SOUND ON"に、ミュートの時は"SOUND OFF"が表示されるように
 //TextMeshProUGUIのtextを置き換えた。
+//※UIネームで変数宣言すればGetComponentメソッド不要。冒頭で"using UnityEngine.UI;"宣言しているため自動でコンポーネント取得している。
