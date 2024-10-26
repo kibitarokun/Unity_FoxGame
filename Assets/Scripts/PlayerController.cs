@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform rangeA;
     [SerializeField] private Transform rangeB;
 
+    //タッチスクリーン対応
+    bool isMoving = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -68,10 +71,14 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-
-        axisH = Input.GetAxisRaw("Horizontal");
-        axisV = Input.GetAxisRaw("Vertical");
-        down = Input.GetKey(KeyCode.DownArrow);　//下矢印キーを押し続けているかを検知し、true/falseで返す
+        //移動
+        if(isMoving == false)
+        {
+            //入力を感知
+            axisH = Input.GetAxisRaw("Horizontal");
+            axisV = Input.GetAxisRaw("Vertical");
+            down = Input.GetKey(KeyCode.DownArrow);　//下矢印キーを押し続けているかを検知し、true/falseで返す
+        }
 
         if (axisH > 0.0f) //右移動
         {
@@ -180,7 +187,7 @@ public class PlayerController : MonoBehaviour
             nowAnime = jumpAnime;
         }
 
-        //downがtrueならキャラクターを屈ませる
+        //downがtrueならキャラクターが伏せをする
         if (down)
         {
             nowAnime = crouchAnime;
@@ -232,5 +239,26 @@ public class PlayerController : MonoBehaviour
             //効果音発生
             SoundManager.soundManager.SEPlay(SEType.Damage);
         }
+    }
+
+    //タッチスクリーン対応
+    public void SetAxis(float h, float v)
+    {
+        axisH = h;
+        axisV = v;
+        if(axisH == 0 && axisV == 0)
+        {
+            isMoving = false;
+        }
+        else
+        {
+            isMoving= true;
+        }
+    }
+
+    //タッチスクリーンでキャラクターに伏せをさせる為のメソッド
+    public void SetDown()
+    {
+        down = true;
     }
 }

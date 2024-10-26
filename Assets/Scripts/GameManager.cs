@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
 
     Image titleImage;
 
+    //プレイヤー操作
+    public GameObject inputUI;　//操作UIパネル
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +80,8 @@ public class GameManager : MonoBehaviour
                         //ゲーム終了と共にキャラクターの動き停止
                         Animator anim = player.GetComponent<Animator>();
                         anim.enabled = false;
+
+                        inputUI.SetActive(false); //操作UI隠す
                     }
                 }
             }  
@@ -99,7 +104,9 @@ public class GameManager : MonoBehaviour
             panel.SetActive(true);
 
             //BGM停止
-            SoundManager.soundManager.StopBgm(BGMType.None);            
+            SoundManager.soundManager.StopBgm(BGMType.None);
+
+            inputUI.SetActive(false); //操作UI隠す
         }
     }
 
@@ -113,5 +120,14 @@ public class GameManager : MonoBehaviour
     {
         int score = stageScore + totalScore;
         scoreText.GetComponent<TextMeshProUGUI>().text = score.ToString();
+    }
+
+    //プレイヤー操作
+    //ジャンプ
+    public void Jump()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PlayerController playerCnt = player.GetComponent<PlayerController>();
+        playerCnt.Jump();
     }
 }

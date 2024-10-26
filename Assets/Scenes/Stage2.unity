@@ -5742,6 +5742,10 @@ PrefabInstance:
       propertyPath: restartButton
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3000100709127336516, guid: fc3f00fc921b5a3429381c8227164fbb, type: 3}
+      propertyPath: is4DPad
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3564810798711145881, guid: fc3f00fc921b5a3429381c8227164fbb, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5832,7 +5836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6666606727508526748, guid: fc3f00fc921b5a3429381c8227164fbb, type: 3}
       propertyPath: gameTime
-      value: 3
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

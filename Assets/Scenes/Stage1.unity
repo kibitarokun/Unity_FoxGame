@@ -3694,6 +3694,14 @@ PrefabInstance:
       propertyPath: restartButton
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3000100709127336516, guid: fc3f00fc921b5a3429381c8227164fbb, type: 3}
+      propertyPath: is4DPad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3000100709127336516, guid: fc3f00fc921b5a3429381c8227164fbb, type: 3}
+      propertyPath: MaxLength
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 3564810798711145881, guid: fc3f00fc921b5a3429381c8227164fbb, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3782,9 +3790,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 136
       objectReference: {fileID: 0}
+    - target: {fileID: 4504052575716370997, guid: fc3f00fc921b5a3429381c8227164fbb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -388.02222
+      objectReference: {fileID: 0}
     - target: {fileID: 6666606727508526748, guid: fc3f00fc921b5a3429381c8227164fbb, type: 3}
       propertyPath: gameTime
-      value: 3
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824236550286647090, guid: fc3f00fc921b5a3429381c8227164fbb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435657647949258157, guid: fc3f00fc921b5a3429381c8227164fbb, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
