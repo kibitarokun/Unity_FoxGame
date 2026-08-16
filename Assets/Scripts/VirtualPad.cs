@@ -2,78 +2,137 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class VirtualPad : MonoBehaviour
 {
-    public float MaxLength = 70; //�^�u�������ő勗��
-    public bool is4DPad = false; //�㉺���E�ɓ������t���O
-    GameObject player; //���삷��v���C���[��GameObject
-    Vector2 defPos; //�^�u�̏������W
-    Vector2 downPos; //�^�b�`�ʒu
+    public float MaxLength = 70; //タブが動く最大距離
+    public bool is4DPad = false; //上下左右に動かすフラグ
+    GameObject player; //操作するプレイヤーのGameObject
+    Vector2 defPos; //タブの初期座標
+    Vector2 downPos; //タッチ位置
+
+    //★追加:このパッドを操作している指(タッチ)のID。マウス操作時は-1のまま
+    int activeFingerId = -1;
+
+    //★追加:Render Modeが「Screen Space - Camera」の場合、当たり判定の計算に
+    //Canvasの Render Camera が必要になるためキャッシュしておく
+    Canvas canvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        //�v���C���[���擾
+        //プレイヤーを取得
         player = GameObject.FindGameObjectWithTag("Player");
-        //�^�u�̏������W
+        //タブの初期座標
         defPos = GetComponent<RectTransform>().localPosition;
-
+        //★追加:親をたどってこのUIが乗っているCanvasを取得
+        canvas = GetComponentInParent<Canvas>();
         
     }
-
     // Update is called once per frame
     void Update()
     {
         
     }
-
-    //�_�E���C�x���g
+    //ダウンイベント
     public void PadDown()
     {
-        //�}�E�X�|�C���g�̃X�N���[�����W
-        downPos = Input.mousePosition;
+        //★追加:このパッドの上で押された指のfingerIdを特定して記録する
+        //(マルチタッチ時にInput.mousePositionが他の指の座標を返してしまう対策)
+        activeFingerId = GetTouchIdOnThisPad();
+
+        //マウスポイントのスクリーン座標
+        downPos = GetPointerPosition();
     }
-    //�h���b�O�C�x���g
+    //ドラッグイベント
     public void PadDrag()
     {
-        //�}�E�X�|�C���g�̃X�N���[�����W
-        Vector2 mousePosition = Input.mousePosition;
-        //�V�����^�u�̈ʒu�����߂�
-        Vector2 newTabPos = mousePosition - downPos;//�}�E�X�_�E���ʒu����̈ړ�����
+        //マウスポイントのスクリーン座標
+        //★変更:Input.mousePositionではなく、PadDownで特定した指の座標を使う
+        Vector2 mousePosition = GetPointerPosition();
+        //新しいタブの位置を求める
+        Vector2 newTabPos = mousePosition - downPos;//マウスダウン位置からの移動差分
         if(is4DPad == false)
         {
-            newTabPos.y = 0; //���X�N���[���̏ꍇ��Y����0�ɂ���
+            newTabPos.y = 0; //横スクロールの場合はY軸を0にする
         }
-        //�ړ��x�N�g�����v�Z����
-        Vector2 axis = newTabPos.normalized; //�x�N�g���𐳋K������
-        //2�_�̋��������߂�
-        float len = Vector2.Distance(defPos, newTabPos);
+        //移動ベクトルを計算する
+        Vector2 axis = newTabPos.normalized; //ベクトルを正規化する
+        //2点の距離を求める
+        //★修正:defPosとnewTabPos(移動差分)は座標系が違うので比較できていなかった。
+        //newTabPos自体が「ダウン位置からの移動量」なので、その大きさをそのまま使う
+        float len = newTabPos.magnitude;
         if(len > MaxLength )
         {
-            //���E�����𒴂����̂Ō��E���W��ݒ肷��
+            //限界距離を超えたので限界座標を設定する
             newTabPos.x = axis.x * MaxLength;
             newTabPos.y = axis.y * MaxLength;
         }
-        //�^�u���ړ�������
-        GetComponent<RectTransform>().localPosition = newTabPos;
-        //�v���C���[���ړ�������
+        //タブを移動させる
+        //★修正:初期位置(defPos)を基準に移動差分(newTabPos)を加算する
+        GetComponent<RectTransform>().localPosition = defPos + newTabPos;
+        //プレイヤーを移動させる
         PlayerController plcnt = player.GetComponent<PlayerController>();
         plcnt.SetAxis(axis.x, axis.y);
-
-        //Pad�����ɍs������L�����N�^�[�͕���������
-        if (axis.y == -1)�@//Input.GetAxisRaw�̒l��-1.0�i���j�ɂȂ�����
+        //Padが下に行ったらキャラクターは伏せをする
+        if (axis.y == -1) //Input.GetAxisRawの値が-1.0(下)になったら
         {
             plcnt.SetDown();
         }
     }
-    //�A�b�v�C�x���g
+    //アップイベント
     public void PadUp()
     {
-        //�^�u�̈ʒu�̏�����
+        //★追加:指を離したので担当していたfingerIdをリセットする
+        activeFingerId = -1;
+
+        //タブの位置の初期化
         GetComponent<RectTransform>().localPosition = defPos;
-        //�v���C���[���~������
+        //プレイヤーを停止させる
         PlayerController plcnt = player.GetComponent< PlayerController>();
         plcnt.SetAxis(0, 0);
+    }
+
+    //★追加:このパッドの矩形内で今まさに押し始めた(Began)タッチのfingerIdを探す
+    //見つからなければ-1を返す(=マウス操作とみなす)
+    int GetTouchIdOnThisPad()
+    {
+        RectTransform rt = GetComponent<RectTransform>();
+
+        //★修正:Render ModeがOverlay以外(Camera/World Space)の場合は
+        //判定にCanvasのRender Cameraを渡さないと正しく判定できない
+        Camera cam = null;
+        if (canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay)
+        {
+            cam = canvas.worldCamera;
+        }
+
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            Touch t = Input.GetTouch(i);
+            if (t.phase == TouchPhase.Began &&
+                RectTransformUtility.RectangleContainsScreenPoint(rt, t.position, cam))
+            {
+                return t.fingerId;
+            }
+        }
+        return -1;
+    }
+
+    //★追加:activeFingerIdで指定した指の現在位置を返す。
+    //タッチが見つからない場合(離された/エディタ実行など)はInput.mousePositionにフォールバックする
+    Vector2 GetPointerPosition()
+    {
+        if (activeFingerId >= 0)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch t = Input.GetTouch(i);
+                if (t.fingerId == activeFingerId)
+                {
+                    return t.position;
+                }
+            }
+        }
+        return Input.mousePosition;
     }
 }
